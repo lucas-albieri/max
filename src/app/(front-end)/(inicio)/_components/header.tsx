@@ -19,8 +19,7 @@ export function Header() {
                 </Button>
                 <Button
                     variant={'secondary'}
-                    color='blue'
-                    className='text-white bg-blue-800'
+                    className='text-white bg-blue-800 hover:bg-blue-900 font-semibold'
                 >
                     ASSINE AGORA
                 </Button>
