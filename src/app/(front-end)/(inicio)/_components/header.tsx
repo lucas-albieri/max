@@ -13,9 +13,9 @@ export function Header() {
                     className="h-8"
                 />
             </div>
-            <div className="flex items-center gap-1">
-                <Button className="mr-4">
-                    Entrar
+            <div className="flex items-center gap-2">
+                <Button className=" font-semibold">
+                    ENTRAR
                 </Button>
                 <Button
                     variant={'secondary'}
