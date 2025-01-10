@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Work_Sans } from 'next/font/google';
+import { Nunito_Sans, Open_Sans, Work_Sans } from 'next/font/google';
 
-const workSans = Work_Sans({ subsets: ['latin'], variable: '--global-font-body' })
+const workSans = Nunito_Sans({ subsets: ['latin'], variable: '--global-font-body' })
 
 export const metadata: Metadata = {
   title: "Max",

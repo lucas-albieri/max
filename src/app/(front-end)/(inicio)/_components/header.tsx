@@ -5,7 +5,7 @@ import logo from '../../../../assets/images/logo-max.svg';
 
 export function Header() {
     return (
-        <div className="flex items-center justify-between h-14 bg-neutral-900 text-white w-full px-4">
+        <div className="flex items-center justify-between h-14 bg-neutral-950 text-white w-full px-4 fixed top-0 bg-opacity-95 z-10">
             <div className="flex items-center">
                 <img
                     src={logo.src}
@@ -14,7 +14,10 @@ export function Header() {
                 />
             </div>
             <div className="flex items-center gap-2">
-                <Button className=" font-semibold">
+                <Button
+                    className="text-white font-semibold"
+                    variant={'link'}
+                >
                     ENTRAR
                 </Button>
                 <Button
