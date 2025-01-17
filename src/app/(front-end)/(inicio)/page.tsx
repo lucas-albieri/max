@@ -2,9 +2,10 @@ import { verticalBanners } from "@/constants/vertical-banners";
 import { BackgroundMax } from "./_components/background-max";
 import { Header } from "./_components/header";
 import { Plans } from "./_components/plans";
-
 import { VerticalBanners } from "./_components/vertical-banners";
 import { FirstRun } from "./_components/first-run-max";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion";
+import { AboutMax } from "./_components/about-max";
 
 export default function Home() {
 
@@ -28,14 +29,14 @@ export default function Home() {
       <Plans />
 
       {/* banners verticais - vertical banners */}
-      <VerticalBanners
-        data={verticalBanners}
-
-      />
+      <VerticalBanners data={verticalBanners} />
 
       {/* estreias  - firstRun */}
       <FirstRun />
 
+      <AboutMax />
+
     </div>
   );
 }
+
