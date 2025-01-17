@@ -1,11 +1,14 @@
+import { verticalBanners } from "@/constants/vertical-banners";
+import { BackgroundMax } from "./_components/background-max";
 import { Header } from "./_components/header";
-import bg from "../../../assets/images/welcome/bg.jpg";
 import { Plans } from "./_components/plans";
 
 import { VerticalBanners } from "./_components/vertical-banners";
-import { verticalBanners } from "@/constants/vertical-banners";
+import { FirstRun } from "./_components/first-run-max";
 
 export default function Home() {
+
+
 
   return (
     <div
@@ -14,34 +17,24 @@ export default function Home() {
         background: "radial-gradient(circle, rgba(1,41,223,1) 0%, rgba(8,18,157,1) 100%)",
       }}
     >
+
+      {/* header - header */}
       <Header />
 
-      <div
-        className="flex flex-col items-center justify-center relative "
-        style={{
-          background: `url(${bg.src}) no-repeat center center`,
-          backgroundSize: "cover",
-          height: "calc(100vh - 14em)",
-          borderBottomRightRadius: "25%",
-          borderBottomLeftRadius: "25%",
-        }}
-      >
-        <div
-          className="absolute w-full h-full bottom-0 "
-          style={{
-            borderBottomRightRadius: "25%",
-            borderBottomLeftRadius: "25%",
-            background: 'linear-gradient(180deg, rgba(1,41,223,0) 35%, rgba(0,0,0,1) 100%)'
-          }}
-        />
-      </div>
+      {/* background azul com a logo e curvatura - background */}
+      <BackgroundMax />
 
+      {/* planos - plans */}
       <Plans />
 
+      {/* banners verticais - vertical banners */}
       <VerticalBanners
         data={verticalBanners}
 
       />
+
+      {/* estreias  - firstRun */}
+      <FirstRun />
 
     </div>
   );

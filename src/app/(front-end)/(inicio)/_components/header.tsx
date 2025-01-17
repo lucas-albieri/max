@@ -22,7 +22,10 @@ export function Header() {
                 </Button>
                 <Button
                     variant={'secondary'}
-                    className='text-white bg-blue-800 hover:bg-blue-900 font-semibold'
+                    className='text-white hover:bg-blue-900 font-extrabold px-6'
+                    style={{
+                        backgroundColor: "#002be7"
+                    }}
                 >
                     ASSINE AGORA
                 </Button>
