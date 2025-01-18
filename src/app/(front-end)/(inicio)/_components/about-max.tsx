@@ -1,5 +1,6 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
 import logoMax from "@/assets/images/logo.png";
+import { ChevronDown, ChevronDownIcon } from "lucide-react";
 
 export function AboutMax() {
 
@@ -74,32 +75,34 @@ export function AboutMax() {
                 >
                     Tem mais perguntas?
                 </h1>
+
                 <Accordion
                     type="single"
                     collapsible
                     className="mt-12 w-full"
-
                 >
-                    {
-                        questions.map((question, index) => (
-                            <AccordionItem
-                                key={index}
-                                value={`item-${index}`}
+                    {questions.map((question, index) => (
+                        <AccordionItem
+                            key={index}
+                            value={`item-${index}`}
+                            className="border-b border-gray-500 mb-6"
+                        >
+                            <AccordionTrigger
+                                className="flex items-center w-full justify-between text-gray-400 hover:text-gray-300 text-2xl font-semibold py-4"
                             >
-                                <AccordionTrigger
-                                    className="text-gray-300 text-2xl font-bold"
-                                >
-                                    {question.title}
-                                </AccordionTrigger>
-                                <AccordionContent
-                                    className="text-white"
-                                >
-                                    {question.content}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))
-                    }
+                                {question.title}
+                                <ChevronDownIcon
+                                />
+                            </AccordionTrigger>
+                            <AccordionContent
+                                className="text-white p-4 text-lg "
+                            >
+                                {question.content}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
                 </Accordion>
+
 
             </div>
 
