@@ -52,7 +52,7 @@ export function AboutMax() {
             />
 
             <div
-                className="flex flex-col items-start justify-center gap-8 w-1/2 mt-12"
+                className="flex flex-col items-start justify-center gap-8 lg:w-1/2 mt-12 px-6 lg:px-0"
             >
                 {
                     aboutItems.map((item, index) => (
@@ -66,12 +66,11 @@ export function AboutMax() {
                 }
             </div>
 
-
             <div
-                className="flex flex-col items-start justify-center gap-4 mt-32 w-1/2"
+                className="flex flex-col items-start justify-center gap-4 mt-20 lg:mt-32 lg:w-1/2 px-6 lg:px-0"
             >
                 <h1
-                    className="text-white text-4xl font-bold text-center w-full "
+                    className="text-white text-2xl lg:text-4xl font-bold text-center w-full "
                 >
                     Tem mais perguntas?
                 </h1>
@@ -79,7 +78,7 @@ export function AboutMax() {
                 <Accordion
                     type="single"
                     collapsible
-                    className="mt-12 w-full"
+                    className="mt-4 lg:mt-12 w-full"
                 >
                     {questions.map((question, index) => (
                         <AccordionItem
@@ -88,24 +87,21 @@ export function AboutMax() {
                             className="border-b border-gray-500 mb-6"
                         >
                             <AccordionTrigger
-                                className="flex items-center w-full justify-between text-gray-400 hover:text-gray-300 text-2xl font-semibold py-4"
+                                className="flex items-center w-full justify-between text-gray-400 hover:text-gray-300 text-xl lg:text-2xl font-semibold py-4 text-left"
                             >
                                 {question.title}
                                 <ChevronDownIcon
                                 />
                             </AccordionTrigger>
                             <AccordionContent
-                                className="text-white p-4 text-lg "
+                                className="text-white p-4 text-base lg:text-lg "
                             >
                                 {question.content}
                             </AccordionContent>
                         </AccordionItem>
                     ))}
                 </Accordion>
-
-
             </div>
-
         </div>
     )
 }
@@ -138,7 +134,7 @@ const AboutItem = ({ title, description, id }: Props) => {
                 className="flex flex-col items-start justify-center gap-4 w-full"
             >
                 <h2
-                    className="text-white text-3xl font-bold"
+                    className="text-white text-2xl lg:text-3xl font-bold"
                 >
                     {title}
                 </h2>

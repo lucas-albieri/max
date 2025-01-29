@@ -33,7 +33,7 @@ export default function Home() {
       <FirstRun />
 
       {/* sobre a max - aboutMax */}
-      {/* <AboutMax /> */}
+      <AboutMax />
 
       {/* footer - footer */}
       {/* <Footer /> */}
