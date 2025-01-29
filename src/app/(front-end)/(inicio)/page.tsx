@@ -24,7 +24,7 @@ export default function Home() {
       <BackgroundMax />
 
       {/* planos - plans */}
-      {/* <Plans /> */}
+      <Plans />
 
       {/* banners verticais - vertical banners */}
       <VerticalBanners data={verticalBanners} />
@@ -36,7 +36,7 @@ export default function Home() {
       <AboutMax />
 
       {/* footer - footer */}
-      {/* <Footer /> */}
+      <Footer />
 
     </div>
   );

@@ -43,26 +43,26 @@ export function Footer() {
 
     return (
         <footer
-            className="flex flex-col items-center justify-center py-6 text-white text-sm"
+            className="flex flex-col items-center justify-center py-6 text-white text-sm w-full px-2 lg:px-0"
             style={{
                 backgroundColor: "#07071C",
             }}
         >
 
-            <div className="flex gap-10 items-center justify-center">
+            <div className="flex gap-8 lg:gap-10 items-center justify-center flex-wrap w-full">
                 {footerButtons.map((button, index) => (
                     <button key={index} className="text-white text-md font-bold uppercase ">{button}</button>
                 ))}
             </div>
 
-            <div className="flex gap-14 items-center justify-center mt-6">
+            <div className="flex gap-6 lg:gap-14  items-center justify-center mt-6 flex-wrap">
                 {footerLinks.map((link, index) => (
-                    <button key={index} className="text-white text-sm ">{link}</button>
+                    <button key={index} className="text-white text-xs lg:text-sm ">{link}</button>
                 ))}
             </div>
 
-            <div className="flex flex-col items-center justify-center mt-6">
-                <p className="text-white text-xs">
+            <div className="flex flex-col items-center justify-center mt-6 flex-wrap">
+                <p className="text-white text-xs text-center">
                     ©2025 WarnerMedia Direct Latin America, LLC. Todos os direitos reservados. Max é usado sob licença.
                 </p>
             </div>
