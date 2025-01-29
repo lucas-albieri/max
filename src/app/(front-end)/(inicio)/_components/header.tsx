@@ -10,19 +10,19 @@ export function Header() {
                 <img
                     src={logo.src}
                     alt="Logo"
-                    className="h-8"
+                    className="lg:h-8 h-6"
                 />
             </div>
             <div className="flex items-center gap-2">
                 <Button
-                    className="text-white font-semibold"
+                    className="text-white font-semibold  text-xs lg:text-base"
                     variant={'link'}
                 >
                     ENTRAR
                 </Button>
                 <Button
                     variant={'secondary'}
-                    className='text-white hover:bg-blue-900 font-extrabold px-6'
+                    className='text-white hover:bg-blue-900 font-extrabold px-6  text-xs lg:text-base'
                     style={{
                         backgroundColor: "#002be7"
                     }}

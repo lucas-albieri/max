@@ -48,37 +48,39 @@ export function Plans() {
 
     return (
         <div
-            className="flex flex-col items-center justify-center mt-4"
+            className="flex flex-col items-center justify-center mt-4 w-full"
         >
             <h1
-                className="text-white text-center text-3xl font-bold mt-10"
+                className="text-white text-center text-2xl lg:text-3xl font-bold mt-10"
             >
                 ESCOLHA O MELHOR PLANO PARA VOCÊ
             </h1>
             <div
-                className="flex gap-1 mt-6 rounded-full"
+                className="flex gap-1 mt-6 rounded-full "
                 style={{
                     backgroundColor: "#2748E3"
                 }}
             >
                 <Button
                     onClick={() => setSelectedPlan('mensal')}
-                    className="font-bold rounded-full text-lg px-12 py-6"
+                    className="font-bold rounded-full text-base lg:text-lg px-6 lg:px-12 py-6"
                     size={'lg'}
                     style={{
                         backgroundColor: selectedPlan === 'mensal' ? '#fff' : '#2747E2',
-                        color: selectedPlan === 'mensal' ? '#262626' : '#fff'
+                        color: selectedPlan === 'mensal' ? '#262626' : '#fff',
+                        fontWeight: selectedPlan === 'mensal' ? 'bold' : 'normal'
                     }}
                 >
                     MENSAL
                 </Button>
                 <Button
                     onClick={() => setSelectedPlan('anual')}
-                    className=" rounded-full text-lg px-6 py-6"
+                    className=" rounded-full text-base lg:text-lg px-3 lg:px-6 py-6"
                     size={'lg'}
                     style={{
                         backgroundColor: selectedPlan === 'anual' ? '#fff' : '#2747E2',
-                        color: selectedPlan === 'anual' ? '#262626' : '#fff'
+                        color: selectedPlan === 'anual' ? '#262626' : '#fff',
+                        fontWeight: selectedPlan === 'anual' ? 'bold' : 'normal'
                     }}
                 >
                     ANUAL PARCELADO
@@ -86,7 +88,7 @@ export function Plans() {
             </div>
 
             <div
-                className="flex gap-4 mt-6"
+                className="flex gap-4 mt-6 w-full flex-col lg:flex-row justify-center items-center"
             >
                 {plans.map((plan, index) => {
                     return (
@@ -101,7 +103,7 @@ export function Plans() {
                 })}
             </div>
             <p
-                className="text-white text-center mt-8 w-1/2 text-xs"
+                className="text-white text-center mt-8 w-11/12 lg:w-1/2 text-xs"
             >
                 *Full HD, 4K Ultra HD e Dolby Atmos não estão disponíveis em todo o conteúdo de cada plano. O conteúdo ao vivo nos planos Standard e Platinum pode conter anúncios.Downloads podem ter restrições em algumas categorias de conteúdo. Saiba mais em: help.max.com/plans. Economia calculada com base no preço da assinatura anual vs. a assinatura mensal regular ao longo de 12 meses.
             </p>
