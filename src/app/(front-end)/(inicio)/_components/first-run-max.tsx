@@ -17,12 +17,12 @@ export function FirstRun() {
             className="flex flex-col items-center justify-center gap-4 p-4 py-16"
         >
             <h3
-                className="text-gray-100 text-5xl font-bold"
+                className="text-gray-100 text-3xl text-center lg:text-5xl font-bold"
             >
                 Estreias que vão dar o que falar
             </h3>
             <div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12  w-full lg:w-3/5"
+                className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 mt6 lg:mt-12 w-full lg:w-3/5"
             >
                 {firstRunBanners.map((banner, index) => (
                     <div
