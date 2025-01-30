@@ -15,17 +15,14 @@ export function Header() {
             </div>
             <div className="flex items-center gap-2">
                 <Button
-                    className="text-white font-semibold  text-xs lg:text-base"
+                    className="text-white font-semibold  text-xs lg:text-sm hover:bg-white/15 hover:no-underline"
                     variant={'link'}
                 >
                     ENTRAR
                 </Button>
                 <Button
                     variant={'secondary'}
-                    className='text-white hover:bg-blue-900 font-extrabold px-6  text-xs lg:text-base'
-                    style={{
-                        backgroundColor: "#002be7"
-                    }}
+                    className='text-white bg-primary hover:bg-primary-hover font-extrabold px-6  text-xs lg:text-sm'
                 >
                     ASSINE AGORA
                 </Button>
