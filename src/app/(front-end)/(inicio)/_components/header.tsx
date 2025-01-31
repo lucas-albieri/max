@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import logo from '../../../../assets/images/logo-max.svg';
+import Link from 'next/link';
 
 export function Header() {
     return (
@@ -14,18 +15,24 @@ export function Header() {
                 />
             </div>
             <div className="flex items-center gap-2">
+
                 <Button
                     className="text-white font-semibold  text-xs lg:text-sm hover:bg-white/15 hover:no-underline"
                     variant={'link'}
                 >
                     ENTRAR
                 </Button>
-                <Button
-                    variant={'secondary'}
-                    className='text-white bg-primary hover:bg-primary-hover font-extrabold px-6  text-xs lg:text-sm'
+                <Link
+                    href="/cadastro"
                 >
-                    ASSINE AGORA
-                </Button>
+                    <Button
+                        variant={'secondary'}
+                        className='text-white bg-primary hover:bg-primary-hover font-extrabold px-6  text-xs lg:text-sm'
+                    >
+                        ASSINE AGORA
+                    </Button>
+                </Link>
+
             </div>
         </div>
     )

@@ -43,7 +43,7 @@ export function SignUpForm() {
                 </p>
 
                 <div
-                    className="flex flex-col gap-4 mt-8 py-8 lg:py-16 px-8 lg:px-16 rounded-lg w-full lg:w-[35rem] items-center justify-center"
+                    className="flex flex-col gap-2 mt-8 py-8 lg:py-16 px-8 lg:px-16 rounded-lg w-full lg:w-[35rem] items-center justify-center"
                     style={{
                         background: "hsla(2, 0%, 90%, .09)",
                     }}
@@ -51,32 +51,32 @@ export function SignUpForm() {
                     <TextField
                         name="displayName"
                         label="Nome"
-                        className=" w-full py-6 text-base lg:text-3xl"
+                        className=" w-full py-5 text-base lg:text-lg"
                     />
                     <TextField
                         name="email"
                         label="Email"
                         type="email"
-                        className=" w-full py-6 text-base lg:text-3xl "
+                        className=" w-full py-5 text-base lg:text-lg "
                     />
                     <TextField
                         name="password"
                         label="Senha"
                         type="password"
-                        className=" w-full py-6 text-base lg:text-3xl"
+                        className=" w-full py-5 text-base lg:text-lg"
                     />
                     <div
                         className="flex flex-col gap-4 w-full mt-6"
                     >
                         <Button
-                            className="bg-transparent border hover:bg-white/10 text-white font-bold text-lg w-full py-7"
+                            className="bg-transparent border hover:bg-white/10 text-white font-bold text-lg w-full py-6"
                             size={'lg'}
                             type="submit"
                         >
                             Criar Conta
                         </Button>
                         <Button
-                            className="bg-gray-200 hover:bg-white text-slate-900 font-bold text-lg w-full py-7"
+                            className="bg-gray-200 hover:bg-white text-slate-900 font-bold text-lg w-full py-6"
                             size={'lg'}
                             type="button"
                             onClick={googleSignIn}
