@@ -29,7 +29,7 @@ export function SignUpForm() {
             onSubmit={onSubmit}
         >
             <div
-                className="flex flex-col px-40 py-40 items-center"
+                className="flex flex-col px-6 lg:px-40 py-20 lg:py-40 items-center"
             >
                 <h1
                     className="text-white text-4xl font-bold"
@@ -43,7 +43,7 @@ export function SignUpForm() {
                 </p>
 
                 <div
-                    className="flex flex-col gap-4 mt-8 py-16 px-16 rounded-lg w-[35rem] items-center justify-center"
+                    className="flex flex-col gap-4 mt-8 py-8 lg:py-16 px-8 lg:px-16 rounded-lg w-full lg:w-[35rem] items-center justify-center"
                     style={{
                         background: "hsla(2, 0%, 90%, .09)",
                     }}
