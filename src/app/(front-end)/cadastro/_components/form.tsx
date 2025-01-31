@@ -29,7 +29,7 @@ export function SignUpForm() {
             onSubmit={onSubmit}
         >
             <div
-                className="flex flex-col px-6 lg:px-40 py-20 lg:py-40 items-center"
+                className="flex flex-col px-6 lg:px-40 py-20 mt-20 items-center"
             >
                 <h1
                     className="text-white text-4xl font-bold"
@@ -51,19 +51,19 @@ export function SignUpForm() {
                     <TextField
                         name="displayName"
                         label="Nome"
-                        className=" w-full py-6 text-3xl"
+                        className=" w-full py-6 text-base lg:text-3xl"
                     />
                     <TextField
                         name="email"
                         label="Email"
                         type="email"
-                        className=" w-full py-6 text-3xl"
+                        className=" w-full py-6 text-base lg:text-3xl "
                     />
                     <TextField
                         name="password"
                         label="Senha"
                         type="password"
-                        className=" w-full py-6 text-3xl"
+                        className=" w-full py-6 text-base lg:text-3xl"
                     />
                     <div
                         className="flex flex-col gap-4 w-full mt-6"
