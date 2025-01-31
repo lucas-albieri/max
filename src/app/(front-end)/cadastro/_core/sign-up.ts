@@ -1,5 +1,4 @@
 import { apiSupabaseClient } from "@/utils/supabase/client";
-import next from "next";
 
 export async function signUp(data: Record<string, unknown>) {
     const { data: response, error } = await apiSupabaseClient.auth.signUp({
