@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Nunito_Sans, Open_Sans, Work_Sans } from 'next/font/google';
+import { Nunito_Sans } from 'next/font/google';
 
 const workSans = Nunito_Sans({ subsets: ['latin'], variable: '--global-font-body' })
 
@@ -16,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+
       <body
         className={workSans.className}
       >
