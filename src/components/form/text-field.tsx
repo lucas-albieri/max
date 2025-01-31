@@ -17,6 +17,7 @@ export function TextField({ name, label, className, ...rest }: Props) {
     return (
         <FormField
             control={control}
+            defaultValue={""}
             name={name}
             render={({ field }) => (
                 <FormItem
@@ -31,7 +32,6 @@ export function TextField({ name, label, className, ...rest }: Props) {
                     >
                         <Input
                             className={cn("text-white bg-[#00000033] ", className)}
-
                             {...field}
                             {...rest}
                         />

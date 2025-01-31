@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Nunito_Sans } from 'next/font/google';
+import { Toaster } from "sonner";
 
 const workSans = Nunito_Sans({ subsets: ['latin'], variable: '--global-font-body' })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body
         className={workSans.className}
       >
+        <Toaster />
         {children}
       </body>
     </html>

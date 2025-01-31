@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { type ZodSchema, type z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
-import { HTTPError } from 'ky'
+import { AuthApiError } from "@supabase/supabase-js";
 
 type Props<
     T extends ZodSchema,
@@ -53,12 +53,8 @@ export function FormControl<
                         onSuccess?.(response as Awaited<ReturnType<F>>)
                         reset()
                     } catch (error) {
-                        if (error instanceof HTTPError) {
-                            const data = (await error.response.json()) as { message: string }
-                            toast.error(data.message)
-                            return
-                        }
-                        if (error instanceof Error) {
+                        if (error instanceof AuthApiError) {
+                            console.log(error)
                             toast.error(error.message)
                         }
                     }
