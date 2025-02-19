@@ -3,6 +3,7 @@
 import { useWindowSize } from "@/helpers/useWidthWindow";
 import logo from "../../../../assets/images/logo.png"
 import bg from "../../../../assets/images/welcome/bg.jpg";
+import Link from "next/link";
 
 export function BackgroundMax() {
 
@@ -37,14 +38,12 @@ export function BackgroundMax() {
                 >
                     Planos a partir de R$18,90 / mês
                 </p>
-                <div
-                    style={{
-                        backgroundColor: "#002be7",
-                    }}
-                    className="text-white  text-md font-bold px-8 py-3 rounded-md mt-4 cursor-pointer"
+                <Link
+                    href="/cadastro"
+                    className="text-white bg-primary hover:bg-primary-hover  text-md font-bold px-8 py-3 rounded-md mt-4 cursor-pointer"
                 >
                     ASSINE AGORA
-                </div>
+                </Link>
             </div>
 
             <div

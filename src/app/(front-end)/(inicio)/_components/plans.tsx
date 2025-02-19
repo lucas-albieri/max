@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowDownToLineIcon, CheckIcon, HeadsetIcon, MonitorIcon } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export function Plans() {
@@ -191,14 +192,19 @@ const CardPlan = ({ features, price, title, type }: CardsProps) => {
             <CardFooter
                 className="justify-center items-end h-full"
             >
-                <Button
-                    className=" font-bold"
-                    style={{
-                        backgroundColor: '#2748E3',
-                    }}
+                <Link
+                    href="/cadastro"
                 >
-                    ESCOLHA SEU PLANO
-                </Button>
+                    <Button
+                        className=" font-bold bg-primary hover:bg-primary-hover"
+                        style={{
+                            backgroundColor: '#2748E3',
+                        }}
+                    >
+                        ESCOLHA SEU PLANO
+                    </Button>
+                </Link>
+
             </CardFooter>
         </Card>
     )
