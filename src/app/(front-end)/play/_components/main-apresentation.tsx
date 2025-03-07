@@ -20,20 +20,18 @@ export function MainApresentation({ id, background, title, age, duration, descri
     return (
         <div
             className=" relative  w-full z-[2] text-white"
+            style={{
+                height: 'calc(100vh - 50px)',
+            }}
         >
             <div
-                className="absolute top-0 left-0 w-4/6  bg-gradient-to-r from-black to-transparent z-[1]"
-                style={{
-                    height: 'calc(100vh - 80px)',
-                }}
+                className="absolute top-0 h-full left-0 w-4/6  bg-gradient-to-r from-black to-transparent z-[1]"
             />
             <img
                 src={background}
                 alt={title}
-                className="h-screen w-screen object-cover object-right-top absolute z-[0]"
-                style={{
-                    height: 'calc(100vh - 80px)',
-                }}
+                className="h-full  w-screen object-cover object-right-top absolute z-[0]"
+
             />
             <div
                 className="absolute top-[28rem] left-16 gap-2 w-2/6 flex flex-col z-[3]"
@@ -68,6 +66,9 @@ export function MainApresentation({ id, background, title, age, duration, descri
                     </div>
                 </Link>
             </div>
+            <div
+                className="absolute bottom-0 h-1/5  w-full  bg-gradient-to-t from-black to-transparent z-[1]"
+            />
         </div>
     )
 }
