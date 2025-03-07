@@ -76,17 +76,41 @@ export default function Home() {
             </div>
 
             <div
-                className="flex flex-col px-16 gap-4 z-10 w-full"
+                className="flex flex-col gap-8 px-16"
             >
-                <h1 className="text-xl font-bold text-zinc-100">
-                    Destaques
-                </h1>
-
-                {/* carrosel */}
+                {/* Destaques */}
                 <Highlights
                     items={films}
+                    title="Destaques"
+                />
+
+                {/* Recomendados para você */}
+                <Highlights
+                    items={films}
+                    title="Recomendados para você"
+                />
+
+                <div
+                    className="flex justify-between px-4 py-20"
+                >
+                    <h1
+                        className="text-6xl font-extrabold uppercase text-white"
+                    >
+                        TOP 10 series de hoje
+                    </h1>
+                </div>
+
+                <Highlights
+                    items={films}
+                    title="Popular na Tv"
+                />
+
+                <Highlights
+                    items={films}
+                    title="Séries para você!"
                 />
             </div>
+
         </div >
     )
 }
