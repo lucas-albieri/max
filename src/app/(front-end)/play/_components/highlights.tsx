@@ -17,9 +17,9 @@ export function Highlights({ items, title }: Props) {
 
     return (
         <div
-            className="flex flex-col  gap-4 z-10 w-full"
+            className="flex flex-col  gap-4 z-[2] w-full"
         >
-            <h1 className="text-xl font-bold text-zinc-100">
+            <h1 className="text-xl font-bold text-zinc-100 select-none">
                 {title}
             </h1>
             <div
