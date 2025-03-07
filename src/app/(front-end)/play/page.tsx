@@ -1,54 +1,45 @@
 import { Header } from "./_components/header";
+import { MainApresentation } from "./_components/main-apresentation";
+import bgScreen from "../../../assets/images/fundo.svg"
 
 export default function Home() {
+
+    const bg = "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
+
     return (
         <div
-            className="flex flex-col bg-primary text-white "
+            className=" flex flex-col h-screen overflow-y-scroll "
+            style={{
+                backgroundImage: `url(${bgScreen.src})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+            }}
+
         >
-            <Header />
             <div
-                className=" relative w-full h-screen "
+                className="relative h-screen"
             >
-                <img
-                    src="https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-                    alt="banner"
-                    className="h-screen w-screen object-cover object-top absolute"
-                    style={{
-                        height: 'calc(100vh - 80px)',
-                        filter: 'brightness(0.8) blur(3px)',
-
-                    }}
+                <Header />
+                <MainApresentation
+                    background={bg}
+                    title="Avengers - Ultimate"
+                    age="16"
+                    duration="3h 2min"
+                    description="Homem de Ferro, Capitão América, Thor, Hulk e os Vingadores se unem para combater o maligno Thanos. Em uma missão para coletar todas as seis pedras infinitas, Thanos planeja usá-las para infligir sua vontade maléfica sobre a humanidade."
+                    id="1"
+                    year="2021"
                 />
-                <div
-                    className="absolute top-1/2 left-20 gap-2 flex flex-col"
-                >
-                    <h1
-                        className="text-6xl font-extrabold"
-                    >
-                        Vingadores - Ultimato
-                    </h1>
-                    <p
-                        className="text-2xl"
-                    >
-                        A18 | 2019 | 3h 2min
-                    </p>
-                    <p
-                        className="text-lg"
-                    >
-                        Ação, Ficção Científica
-                    </p>
-                    <div
-                        className=" "
-                    >
-                        Ir para o Filme
-                    </div>
-                </div>
             </div>
-            <div
-                className="bg-primary h-80"
-            >
 
+            <div
+                className="flex flex-col px-16 gap-4 z-10  w-full"
+            >
+                <h1 className="text-xl font-bold text-gray-200">
+                    Destaques
+                </h1>
             </div>
         </div>
     )
 }
+

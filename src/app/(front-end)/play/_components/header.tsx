@@ -38,7 +38,10 @@ export function Header() {
     const pathname = usePathname();
 
     return (
-        <div className="flex items-center justify-between h-20  text-white w-full px-20 fixed top-0  z-10" >
+        <div className="flex items-center justify-between h-20  text-white w-full px-20 fixed top-0 z-10" >
+            <div
+                className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black to-black/10 -z-10"
+            />
             <div className="flex items-center" >
                 <img
                     src={logo.src}
@@ -46,7 +49,7 @@ export function Header() {
                     className="lg:h-8 h-6"
                 />
             </div>
-            <div className="flex items-center gap-6" >
+            <div className="flex items-center gap-8" >
 
                 {
                     links.map((link, index) => {
@@ -56,10 +59,11 @@ export function Header() {
                                 href={link.href}
                             >
                                 <p
-                                    className="hover:text-gray-300 text-2xl font-bold"
+                                    className="hover:text-gray-300 text-lg font-bold"
                                     style={{
                                         textDecoration: pathname === link.href ? 'underline' : 'none',
-                                        textUnderlineOffset: '16px'
+                                        textUnderlineOffset: '12px',
+                                        textDecorationThickness: '3px'
                                     }}
                                 >
                                     {link.title}
