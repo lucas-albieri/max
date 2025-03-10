@@ -30,6 +30,8 @@ export async function updateSession(request: NextRequest) {
     // refreshing the auth token
     const user = await supabase.auth.getUser()
 
+    console.log(user)
+
     // redirect to play subdomain if user is authenticated
     const hostname = request.headers.get("host") || "";
     const subdomain = hostname.split(".")[0];
