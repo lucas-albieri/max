@@ -3,6 +3,7 @@ import { MainApresentation } from "./_components/main-apresentation";
 import bgScreen from "../../../assets/images/fundo.svg"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Highlights } from "./_components/highlights";
+import { Top10Ranking } from "./_components/top10";
 
 export default function Home() {
 
@@ -90,15 +91,9 @@ export default function Home() {
                     title="Recomendados para você"
                 />
 
-                <div
-                    className="flex justify-between px-4 py-20"
-                >
-                    <h1
-                        className="text-6xl font-extrabold uppercase text-white"
-                    >
-                        TOP 10 series de hoje
-                    </h1>
-                </div>
+                <Top10Ranking
+                    items={films}
+                />
 
                 <Highlights
                     items={films}
