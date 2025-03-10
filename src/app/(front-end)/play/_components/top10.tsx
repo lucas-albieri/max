@@ -1,13 +1,12 @@
 'use client'
 
+import { baseUrlImage } from "@/services/api/client-tmdb"
+import { Film } from "@/types/Films"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { useRef } from "react"
 
 type Props = {
-    items: {
-        id: string
-        image: string
-    }[]
+    items: Film[]
 }
 
 export function Top10Ranking({ items, }: Props) {
@@ -63,7 +62,7 @@ export function Top10Ranking({ items, }: Props) {
                                         {index + 1}
                                     </p>
                                     <img
-                                        src={item.image ?? "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"}
+                                        src={baseUrlImage + item.poster_path}
                                         alt="Avengers"
                                         className="w-full h-full object-cover rounded-md hover:border hover:border-white"
                                     />

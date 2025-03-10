@@ -1,55 +1,33 @@
 import { Header } from "./_components/header";
 import { MainApresentation } from "./_components/main-apresentation";
 import bgScreen from "../../../assets/images/fundo.svg"
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Highlights } from "./_components/highlights";
 import { Top10Ranking } from "./_components/top10";
+import { fetchFilms } from "@/services/tmdb/fetch-films";
 
-export default function Home() {
+type Params = {
+    searchParams: Promise<{
+        page?: string;
+    }>;
+};
 
-    const bg = "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-    const films = [
-        {
-            id: "1",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "2",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "3",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "4",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "5",
-            image: "https://m.media-amazon.com/images/I/81xXOoQLglL.jpg"
-        },
-        {
-            id: "6",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "7",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "8",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        },
-        {
-            id: "9",
-            image: "https://uauposters.com.br/media/catalog/product/2/1/214920140608-uau-posters-filmes-infantis-animacao-carros-cars--3.jpg"
-        },
-        {
-            id: "10",
-            image: "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"
-        }
-    ]
+export default async function Home({ searchParams }: Params) {
+
+    const { page } = await searchParams
+
+    const [
+        topRated,
+        popular,
+        upComing,
+        nowPlaying
+    ] = await fetchFilms({
+        page: Number(page) || 1
+    })
+
+    console.log(topRated)
+
+    const topFilm = topRated[1]
+
     return (
         <div
             className=" flex flex-col h-screen overflow-y-scroll gap-2"
@@ -66,13 +44,7 @@ export default function Home() {
             >
                 <Header />
                 <MainApresentation
-                    background={bg}
-                    title="Avengers - Ultimate"
-                    age="16"
-                    duration="3h 2min"
-                    description="Homem de Ferro, Capitão América, Thor, Hulk e os Vingadores se unem para combater o maligno Thanos. Em uma missão para coletar todas as seis pedras infinitas, Thanos planeja usá-las para infligir sua vontade maléfica sobre a humanidade."
-                    id="1"
-                    year="2021"
+                    film={topFilm}
                 />
             </div>
 
@@ -81,27 +53,27 @@ export default function Home() {
             >
                 {/* Destaques */}
                 <Highlights
-                    items={films}
+                    items={popular}
                     title="Destaques"
                 />
 
                 {/* Recomendados para você */}
                 <Highlights
-                    items={films}
+                    items={upComing}
                     title="Recomendados para você"
                 />
 
                 <Top10Ranking
-                    items={films}
+                    items={topRated}
                 />
 
                 <Highlights
-                    items={films}
+                    items={nowPlaying}
                     title="Popular na Tv"
                 />
 
                 <Highlights
-                    items={films}
+                    items={popular}
                     title="Séries para você!"
                 />
             </div>

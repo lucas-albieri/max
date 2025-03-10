@@ -1,13 +1,12 @@
 'use client'
 
+import { baseUrlImage } from "@/services/api/client-tmdb"
+import { Film } from "@/types/Films"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { useRef } from "react"
 
 type Props = {
-    items: {
-        id: string
-        image: string
-    }[]
+    items: Film[]
     title: string
 }
 
@@ -50,7 +49,7 @@ export function Highlights({ items, title }: Props) {
                                     className="w-[13rem] flex flex-shrink-0 h-80 cursor-pointer hover:border hover:border-white select-none"
                                 >
                                     <img
-                                        src={item.image ?? "https://wallpapers.com/images/hd/avengers-movie-339j2aimmb8n27xb.jpg"}
+                                        src={baseUrlImage + item.poster_path}
                                         alt="Avengers"
                                         className="w-full h-full object-cover rounded-md"
                                     />
