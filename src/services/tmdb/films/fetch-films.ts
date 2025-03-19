@@ -1,7 +1,7 @@
 'use cache'
 
+import { clientTMDB } from "@/services/api/client-tmdb"
 import { Film } from "@/types/films"
-import { clientTMDB } from "../api/client-tmdb"
 
 type Params = {
     page: number

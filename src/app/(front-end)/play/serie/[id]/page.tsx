@@ -1,24 +1,34 @@
 import { HeadphonesIcon, PodcastIcon, } from "lucide-react";
 import Image from "next/image";
 import { Header } from "../../_components/header";
-import { getSerieById } from "@/services/tmdb/get-serie-by-id";
+import { getSerieById } from "@/services/tmdb/series/get-serie-by-id";
 import { baseUrlImage } from "@/services/api/client-tmdb";
 import { ActionButtons } from "./_components/action-buttons";
+import { Episodes } from "./_components/episodes";
+import { getEpisodesBySeason } from "@/services/tmdb/series/get-episodes";
+import { Footer } from "./_components/footer";
+import { getRecommendedSeriesBySerie } from "@/services/tmdb/series/get-recommended-series-by-serie";
 
 type Props = {
     params: Promise<{
         id: string
     }>
+    searchParams: Promise<{
+        season: string
+    }>
 }
 
-export default async function SerieById({ params }: Props) {
+export default async function SerieById({ params, searchParams }: Props) {
 
     const _params = await params
+    const _searchParams = await searchParams
+
     const id = _params.id
+    const season = _searchParams.season
 
     const data = await getSerieById(id)
-
-    console.log(data)
+    const episodesBySeason = await getEpisodesBySeason({ id, season })
+    const recommendedSeries = await getRecommendedSeriesBySerie(id)
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-neutral-800 to-black text-white">
@@ -29,7 +39,6 @@ export default async function SerieById({ params }: Props) {
             <main className="relative">
                 {/* Hero Banner */}
                 <div className="relative w-full h-[92vh]">
-
                     <Image
                         src={baseUrlImage + data.backdrop_path}
                         unoptimized
@@ -89,6 +98,13 @@ export default async function SerieById({ params }: Props) {
                     </div>
                 </div>
             </main>
+
+            <Episodes
+                episodes={episodesBySeason.episodes}
+                recommendedSeries={recommendedSeries.slice(0, 8)}
+            />
+
+            <Footer />
         </div>
     )
 }

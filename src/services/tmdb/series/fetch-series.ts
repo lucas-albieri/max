@@ -1,6 +1,6 @@
 'use cache'
 
-import { clientTMDB } from "../api/client-tmdb"
+import { clientTMDB } from "../../api/client-tmdb"
 import { Serie } from "@/types/series"
 
 type Params = {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Nunito_Sans } from 'next/font/google';
 import { Toaster } from "sonner";
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 const workSans = Nunito_Sans({ subsets: ['latin'], variable: '--global-font-body' })
 
@@ -17,12 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-
       <body
         className={workSans.className}
       >
-        <Toaster />
-        {children}
+        <NuqsAdapter>
+          <Toaster />
+          {children}
+        </NuqsAdapter>
       </body>
     </html>
   );

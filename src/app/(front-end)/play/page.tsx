@@ -3,8 +3,8 @@ import { MainApresentation } from "./_components/main-apresentation";
 import bgScreen from "../../../assets/images/fundo.svg"
 import { Highlights } from "./_components/highlights";
 import { Top10Ranking } from "./_components/top10";
-import { fetchFilms } from "@/services/tmdb/fetch-films";
-import { fetchSeries } from "@/services/tmdb/fetch-series";
+import { fetchSeries } from "@/services/tmdb/series/fetch-series";
+import { fetchFilms } from "@/services/tmdb/films/fetch-films";
 
 type Params = {
     searchParams: Promise<{
