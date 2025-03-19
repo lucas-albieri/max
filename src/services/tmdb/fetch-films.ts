@@ -1,3 +1,5 @@
+'use cache'
+
 import { Film } from "@/types/films"
 import { clientTMDB } from "../api/client-tmdb"
 
