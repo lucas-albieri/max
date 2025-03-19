@@ -9,7 +9,7 @@ export const clientTMDB = axios.create({
     headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_APP_TMDB_API_KEY}`
-    }
+    },
 })
 
 export const baseUrlImage = "https://image.tmdb.org/t/p/original"

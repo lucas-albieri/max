@@ -1,34 +1,33 @@
-import { Film } from "@/types/films"
 import { clientTMDB } from "../api/client-tmdb"
+import { Serie } from "@/types/series"
 
 type Params = {
     page: number
 }
 
-export const fetchFilms = async ({ page }: Params) => {
+export const fetchSeries = async ({ page }: Params) => {
 
     const response = await Promise.all([
-        clientTMDB.get('movie/top_rated', {
+        clientTMDB.get('tv/airing_today', {
             params: {
                 page
             }
         }),
-        clientTMDB.get('movie/popular', {
+        clientTMDB.get('tv/on_the_air', {
             params: {
                 page
             }
         }),
-        clientTMDB.get('movie/upcoming', {
+        clientTMDB.get('tv/popular', {
             params: {
                 page
             }
         }),
-        clientTMDB.get('movie/now_playing', {
+        clientTMDB.get('tv/top_rated', {
             params: {
                 page
             }
         })
     ])
-    return response.map(({ data }) => data.results) as Film[][]
-
+    return response.map(({ data }) => data.results) as Serie[][]
 }

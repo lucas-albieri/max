@@ -1,7 +1,7 @@
 'use client'
 
 import { baseUrlImage } from "@/services/api/client-tmdb"
-import { Film } from "@/types/Films"
+import { Film } from "@/types/films"
 import Link from "next/link"
 
 type MainApresentationProps = {
