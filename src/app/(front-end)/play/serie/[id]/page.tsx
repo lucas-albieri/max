@@ -24,7 +24,7 @@ export default async function SerieById({ params, searchParams }: Props) {
     const _searchParams = await searchParams
 
     const id = _params.id
-    const season = _searchParams.season
+    const season = _searchParams.season || "1"
 
     const data = await getSerieById(id)
     const episodesBySeason = await getEpisodesBySeason({ id, season })
@@ -55,8 +55,6 @@ export default async function SerieById({ params, searchParams }: Props) {
                     {/* Content Overlay */}
                     <div className="absolute bottom-0 left-0 p-12 w-full z-10">
                         <div className="flex flex-col gap-4 max-w-3xl">
-                            {/* 30 Years Badge */}
-
                             {/* Show Title */}
                             <h1 className="text-6xl font-light tracking-wider text-white mb-2">
                                 {data.name}
@@ -102,6 +100,7 @@ export default async function SerieById({ params, searchParams }: Props) {
             <Episodes
                 episodes={episodesBySeason.episodes}
                 recommendedSeries={recommendedSeries.slice(0, 8)}
+                seasons={data.seasons.length}
             />
 
             <Footer />

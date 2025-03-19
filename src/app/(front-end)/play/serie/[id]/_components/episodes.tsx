@@ -12,9 +12,10 @@ import Link from "next/link"
 type Props = {
     episodes: Episode[]
     recommendedSeries: Serie[]
+    seasons: number
 }
 
-export function Episodes({ episodes, recommendedSeries }: Props) {
+export function Episodes({ episodes, recommendedSeries, seasons }: Props) {
 
     const [season, setSeason] = useQueryState("season", { defaultValue: "1", shallow: false })
 
@@ -42,7 +43,7 @@ export function Episodes({ episodes, recommendedSeries }: Props) {
 
                     {showSeasonDropdown && (
                         <div className="absolute top-full left-0 mt-1 bg-[#1a1a1a] rounded-md shadow-lg z-10 w-full">
-                            {Array.from({ length: 15 }, (_, i) => (
+                            {Array.from({ length: seasons }, (_, i) => (
                                 <button
                                     key={i}
                                     className="block w-full text-left px-4 py-2 hover:bg-[#2a2a2a] transition"
@@ -104,7 +105,7 @@ export function Episodes({ episodes, recommendedSeries }: Props) {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4">
                     {recommendedSeries.map((show) => (
                         <Link
-                            href={`/play/serie/${show.id}`}
+                            href={`/serie/${show.id}`}
                             key={show.id}
                         >
                             <div key={show.id} className="relative group">
