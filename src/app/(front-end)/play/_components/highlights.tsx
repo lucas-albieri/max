@@ -1,8 +1,8 @@
 'use client'
 
 import { baseUrlImage } from "@/services/api/client-tmdb"
-import { Film } from "@/types/films"
 import { Serie } from "@/types/series"
+import { Film } from "@/types/films"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import Link from "next/link"
 import { useRef } from "react"
