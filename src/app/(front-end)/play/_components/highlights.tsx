@@ -1,16 +1,20 @@
 'use client'
 
 import { baseUrlImage } from "@/services/api/client-tmdb"
-import { Film } from "@/types/Films"
+import { Serie } from "@/types/series"
+import { Film } from "@/types/films"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import Link from "next/link"
 import { useRef } from "react"
+import Image from "next/image"
 
 type Props = {
-    items: Film[]
+    items: Film[] | Serie[]
     title: string
+    type: 'serie' | 'film'
 }
 
-export function Highlights({ items, title }: Props) {
+export function Highlights({ items, title, type }: Props) {
 
     const carrosselRef = useRef<HTMLDivElement>(null);
 
@@ -42,18 +46,29 @@ export function Highlights({ items, title }: Props) {
                     }}
                 >
                     {
-                        items.map((item, index) => {
+                        items.map((item) => {
                             return (
-                                <div
-                                    key={index}
-                                    className="w-[13rem] flex flex-shrink-0 h-80 cursor-pointer hover:border hover:border-white select-none"
+                                <Link
+                                    href={
+                                        type === 'film' ? `movie/${item.id}`
+                                            : `serie/${item.id}`
+                                    }
+                                    key={item.id}
                                 >
-                                    <img
-                                        src={baseUrlImage + item.poster_path}
-                                        alt="Avengers"
-                                        className="w-full h-full object-cover rounded-md"
-                                    />
-                                </div>
+                                    <div
+                                        key={Math.random()}
+                                        className="w-[13rem] flex flex-shrink-0 h-80 cursor-pointer hover:border hover:border-white select-none"
+                                    >
+                                        <Image
+                                            src={baseUrlImage + item.poster_path}
+                                            alt="Avengers"
+                                            width={200}
+                                            height={300}
+                                            className="w-full h-full object-cover rounded-md"
+                                        />
+                                    </div>
+                                </Link>
+
                             )
                         })
                     }

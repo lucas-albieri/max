@@ -27,12 +27,12 @@ export function FormControl<
     const methods = useForm({
         resolver: zodResolver(schema),
         defaultValues: {
-            // @ts-ignore
+            // @ts-expect-error defaultValues is not a property of undefined
             ...options.defaultValues,
         },
     })
 
-    const { handleSubmit, formState, reset } = methods
+    const { handleSubmit, reset } = methods
 
     return (
         <FormProvider {...methods}>
@@ -54,7 +54,6 @@ export function FormControl<
                         reset()
                     } catch (error) {
                         if (error instanceof AuthApiError) {
-                            console.log(error)
                             toast.error(error.message)
                         }
                     }

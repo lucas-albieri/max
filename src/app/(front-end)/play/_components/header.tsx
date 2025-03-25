@@ -59,7 +59,7 @@ export function Header() {
                                 href={link.href}
                             >
                                 <p
-                                    className="hover:text-gray-300 text-lg font-bold"
+                                    className="hover:text-gray-300 text-md font-bold"
                                     style={{
                                         textDecoration: pathname === link.href ? 'underline' : 'none',
                                         textUnderlineOffset: '12px',

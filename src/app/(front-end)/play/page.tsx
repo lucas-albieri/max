@@ -3,7 +3,9 @@ import { MainApresentation } from "./_components/main-apresentation";
 import bgScreen from "../../../assets/images/fundo.svg"
 import { Highlights } from "./_components/highlights";
 import { Top10Ranking } from "./_components/top10";
-import { fetchFilms } from "@/services/tmdb/fetch-films";
+import { fetchSeries } from "@/services/tmdb/series/fetch-series";
+import { fetchFilms } from "@/services/tmdb/films/fetch-films";
+import { getLogoFilm } from "@/services/tmdb/films/get-logo-film";
 
 type Params = {
     searchParams: Promise<{
@@ -18,15 +20,27 @@ export default async function Home({ searchParams }: Params) {
     const [
         topRated,
         popular,
+        // @typescript-eslint/no-unused-vars
         upComing,
         nowPlaying
     ] = await fetchFilms({
         page: Number(page) || 1
     })
 
-    console.log(topRated)
 
-    const topFilm = topRated[1]
+    const [
+        // @typescript-eslint/no-unused-vars
+        airingToday,
+        onTheAir,
+        popularSeries,
+        topRatedSeries
+    ] = await fetchSeries({
+        page: 1
+    })
+
+    const randomNumber = Math.floor(Math.random() * 10)
+    const topFilm = popular[randomNumber]
+    const logoTopFilm = await getLogoFilm(topFilm.id.toString())
 
     return (
         <div
@@ -45,6 +59,7 @@ export default async function Home({ searchParams }: Params) {
                 <Header />
                 <MainApresentation
                     film={topFilm}
+                    logo={logoTopFilm.logos[0].file_path}
                 />
             </div>
 
@@ -53,28 +68,32 @@ export default async function Home({ searchParams }: Params) {
             >
                 {/* Destaques */}
                 <Highlights
-                    items={popular}
+                    items={topRated}
                     title="Destaques"
+                    type="film"
                 />
 
                 {/* Recomendados para você */}
                 <Highlights
-                    items={upComing}
+                    items={topRatedSeries}
                     title="Recomendados para você"
+                    type="serie"
                 />
 
                 <Top10Ranking
-                    items={topRated}
+                    items={onTheAir}
                 />
 
                 <Highlights
                     items={nowPlaying}
                     title="Popular na Tv"
+                    type="film"
                 />
 
                 <Highlights
-                    items={popular}
+                    items={popularSeries}
                     title="Séries para você!"
+                    type="film"
                 />
             </div>
 

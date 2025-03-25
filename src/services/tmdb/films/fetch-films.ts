@@ -1,5 +1,7 @@
-import { Film } from "@/types/Films"
-import { clientTMDB } from "../api/client-tmdb"
+'use cache'
+
+import { clientTMDB } from "@/services/api/client-tmdb"
+import { Film } from "@/types/films"
 
 type Params = {
     page: number
@@ -31,10 +33,4 @@ export const fetchFilms = async ({ page }: Params) => {
     ])
     return response.map(({ data }) => data.results) as Film[][]
 
-    // return response.data as {
-    //     page: number,
-    //     results: Film[],
-    //     total_pages: number,
-    //     total_results: number
-    // }
 }

@@ -1,12 +1,12 @@
 'use client'
 
 import { baseUrlImage } from "@/services/api/client-tmdb"
-import { Film } from "@/types/Films"
+import { Serie } from "@/types/series"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { useRef } from "react"
 
 type Props = {
-    items: Film[]
+    items: Serie[]
 }
 
 export function Top10Ranking({ items, }: Props) {
