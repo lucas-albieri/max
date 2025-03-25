@@ -27,12 +27,12 @@ export function FormControl<
     const methods = useForm({
         resolver: zodResolver(schema),
         defaultValues: {
-            // @ts-ignore
+            // @ts-expect-error
             ...options.defaultValues,
         },
     })
 
-    const { handleSubmit, formState, reset } = methods
+    const { handleSubmit, reset } = methods
 
     return (
         <FormProvider {...methods}>

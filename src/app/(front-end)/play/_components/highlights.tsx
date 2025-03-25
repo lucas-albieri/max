@@ -45,13 +45,14 @@ export function Highlights({ items, title, type }: Props) {
                     }}
                 >
                     {
-                        items.map((item, index) => {
+                        items.map((item) => {
                             return (
                                 <Link
                                     href={
                                         type === 'film' ? `movie/${item.id}`
                                             : `serie/${item.id}`
                                     }
+                                    key={item.id}
                                 >
                                     <div
                                         key={Math.random()}

@@ -1,4 +1,4 @@
-import { Episode, Season } from "@/types/episodes";
+import { Season } from "@/types/episodes";
 import { clientTMDB } from "../../api/client-tmdb";
 
 type Props = {

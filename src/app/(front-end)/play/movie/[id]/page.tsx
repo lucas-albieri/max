@@ -1,6 +1,5 @@
-import { BookmarkIcon, HeadphonesIcon, PlayIcon, PlusIcon, PodcastIcon, SearchIcon } from "lucide-react";
+import { HeadphonesIcon, PodcastIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Header } from "../../_components/header";
 import { getFilmById } from "@/services/tmdb/films/get-film-by-id";
 import { baseUrlImage } from "@/services/api/client-tmdb";
