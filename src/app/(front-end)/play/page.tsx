@@ -5,6 +5,7 @@ import { Highlights } from "./_components/highlights";
 import { Top10Ranking } from "./_components/top10";
 import { fetchSeries } from "@/services/tmdb/series/fetch-series";
 import { fetchFilms } from "@/services/tmdb/films/fetch-films";
+import { getLogoFilm } from "@/services/tmdb/films/get-logo-film";
 
 type Params = {
     searchParams: Promise<{
@@ -36,8 +37,8 @@ export default async function Home({ searchParams }: Params) {
     })
 
     const randomNumber = Math.floor(Math.random() * 10)
-    console.log(randomNumber)
     const topFilm = popular[randomNumber]
+    const logoTopFilm = await getLogoFilm(topFilm.id.toString())
 
     return (
         <div
@@ -56,6 +57,7 @@ export default async function Home({ searchParams }: Params) {
                 <Header />
                 <MainApresentation
                     film={topFilm}
+                    logo={logoTopFilm.logos[0].file_path}
                 />
             </div>
 

@@ -18,7 +18,7 @@ export async function signUp(data: Record<string, unknown>) {
 }
 
 export async function googleSignIn() {
-    const { data, error } = await apiSupabaseClient.auth.signInWithOAuth({
+    const { } = await apiSupabaseClient.auth.signInWithOAuth({
         provider: 'google',
         options: {
             queryParams: {

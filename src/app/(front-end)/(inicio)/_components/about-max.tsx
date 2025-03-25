@@ -1,6 +1,6 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
 import logoMax from "@/assets/images/logo.png";
-import { ChevronDown, ChevronDownIcon } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 
 export function AboutMax() {
 
