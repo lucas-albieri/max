@@ -1,1 +1,9 @@
 'use cache'
+
+import { clientTMDB } from "../../api/client-tmdb"
+import { Film, FilmFull } from "@/types/films"
+
+export async function getFilmById(id: string) {
+    const response = await clientTMDB.get(`movie/${id}`)
+    return response.data as FilmFull
+}

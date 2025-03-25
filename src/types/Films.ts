@@ -14,3 +14,22 @@ export type Film = {
     vote_average: number,
     vote_count: number
 }
+
+export type FilmFull = Film & {
+    genres: {
+        id: number,
+        name: string
+    }[],
+    budget: number,
+    imdb_id: string,
+}
+
+export type FilmLogo = {
+    backdrops: {
+        file_path: string,
+    }[],
+    logos: {
+        file_path: string,
+    }[]
+
+}

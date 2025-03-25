@@ -3,11 +3,11 @@ import Image from "next/image";
 import { Header } from "../../_components/header";
 import { getSerieById } from "@/services/tmdb/series/get-serie-by-id";
 import { baseUrlImage } from "@/services/api/client-tmdb";
-import { ActionButtons } from "./_components/action-buttons";
 import { Episodes } from "./_components/episodes";
 import { getEpisodesBySeason } from "@/services/tmdb/series/get-episodes";
 import { Footer } from "./_components/footer";
 import { getRecommendedSeriesBySerie } from "@/services/tmdb/series/get-recommended-series-by-serie";
+import { ActionButtons } from "@/components/action-buttons";
 
 type Props = {
     params: Promise<{
@@ -78,7 +78,9 @@ export default async function SerieById({ params, searchParams }: Props) {
                             </div>
 
                             {/* Action Buttons */}
-                            <ActionButtons />
+                            <ActionButtons
+                                type="serie"
+                            />
 
                             {/* Description */}
                             <div className="mt-6 max-w-2xl">
@@ -106,4 +108,4 @@ export default async function SerieById({ params, searchParams }: Props) {
             <Footer />
         </div>
     )
-}
+}   

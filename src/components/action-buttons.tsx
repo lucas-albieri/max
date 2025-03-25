@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { PlayIcon, PlusIcon } from "lucide-react";
 
-export function ActionButtons() {
+type Props = {
+    type: "serie" | "movie"
+}
+
+export function ActionButtons({ type }: Props) {
     return (
         <div className="flex items-center gap-4">
             <Button className="flex items-center justify-center gap-2 bg-white text-black font-bold py-3 px-6 rounded-md hover:bg-white/90 transition w-80">
                 <PlayIcon size={20} />
-                <span>Assistir T1 Ep. 1</span>
+                <span>
+                    {type === "serie" ? "Assistir T1 Ep. 1" : "Assistir"}
+                </span>
             </Button>
             <Button
                 variant={"ghost"}

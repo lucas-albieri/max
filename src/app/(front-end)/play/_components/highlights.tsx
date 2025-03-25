@@ -54,7 +54,7 @@ export function Highlights({ items, title, type }: Props) {
                                     }
                                 >
                                     <div
-                                        key={index}
+                                        key={Math.random()}
                                         className="w-[13rem] flex flex-shrink-0 h-80 cursor-pointer hover:border hover:border-white select-none"
                                     >
                                         <img
