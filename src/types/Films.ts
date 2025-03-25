@@ -30,6 +30,9 @@ export type FilmLogo = {
     }[],
     logos: {
         file_path: string,
-    }[]
+    }[],
+    posters: {
+        file_path: string,
+    }[],
 
 }

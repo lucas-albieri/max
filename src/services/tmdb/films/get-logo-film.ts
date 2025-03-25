@@ -7,5 +7,13 @@ export async function getLogoFilm(movieId: string) {
             language: 'pt'
         }
     })
+    if (response.data.logos.length === 0) {
+        const response = await clientTMDB.get(`movie/${movieId}/images`, {
+            params: {
+                language: 'en'
+            }
+        })
+        return response.data as FilmLogo
+    }
     return response.data as FilmLogo
 }

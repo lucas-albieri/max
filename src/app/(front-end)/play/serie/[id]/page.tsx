@@ -8,6 +8,7 @@ import { getEpisodesBySeason } from "@/services/tmdb/series/get-episodes";
 import { Footer } from "./_components/footer";
 import { getRecommendedSeriesBySerie } from "@/services/tmdb/series/get-recommended-series-by-serie";
 import { ActionButtons } from "@/components/action-buttons";
+import { getLogoSerie } from "@/services/tmdb/series/get-logo-serie";
 
 type Props = {
     params: Promise<{
@@ -27,6 +28,7 @@ export default async function SerieById({ params, searchParams }: Props) {
     const season = _searchParams.season || "1"
 
     const data = await getSerieById(id)
+    const filePathLogo = await getLogoSerie(id)
     const episodesBySeason = await getEpisodesBySeason({ id, season })
     const recommendedSeries = await getRecommendedSeriesBySerie(id)
 
@@ -56,9 +58,13 @@ export default async function SerieById({ params, searchParams }: Props) {
                     <div className="absolute bottom-0 left-0 p-12 w-full z-10">
                         <div className="flex flex-col gap-4 max-w-3xl">
                             {/* Show Title */}
-                            <h1 className="text-6xl font-light tracking-wider text-white mb-2">
-                                {data.name}
-                            </h1>
+                            <Image
+                                src={baseUrlImage + filePathLogo.logos[0].file_path || ""}
+                                unoptimized
+                                alt={data.name}
+                                width={400}
+                                height={100}
+                            />
 
                             {/* Show Info */}
                             <div className="flex items-center gap-3 text-sm text-white/80 mb-4">
@@ -87,8 +93,10 @@ export default async function SerieById({ params, searchParams }: Props) {
                                 <p className="text-white/90 text-lg">
                                     {data.overview.slice(0, 200)}...
                                 </p>
-                                <div className="mt-2 flex flex-col gap-1">
-                                    <span className="text-white/70 text-sm">Comédia</span>
+                                <div className="mt-2 flex flex-col gap-2">
+                                    <span className="text-white/70 text-sm">
+                                        {data.genres.map(genre => genre.name).join(", ")}
+                                    </span>
                                     <span className="text-white/50 text-xs mt-2">
                                         A disponibilidade de 4K UHD, HDR e Dolby Atmos varia de acordo com o dispositivo e o plano.
                                     </span>
