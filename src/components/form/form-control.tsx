@@ -54,7 +54,6 @@ export function FormControl<
                         reset()
                     } catch (error) {
                         if (error instanceof AuthApiError) {
-                            console.log(error)
                             toast.error(error.message)
                         }
                     }
