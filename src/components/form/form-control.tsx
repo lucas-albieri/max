@@ -27,7 +27,7 @@ export function FormControl<
     const methods = useForm({
         resolver: zodResolver(schema),
         defaultValues: {
-            // @ts-expect-error
+            // @ts-expect-error defaultValues is not a property of undefined
             ...options.defaultValues,
         },
     })

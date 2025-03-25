@@ -20,7 +20,7 @@ export default async function Home({ searchParams }: Params) {
     const [
         topRated,
         popular,
-        // eslint disable-next-line
+        // @typescript-eslint/no-unused-vars
         upComing,
         nowPlaying
     ] = await fetchFilms({
@@ -29,7 +29,7 @@ export default async function Home({ searchParams }: Params) {
 
 
     const [
-        // eslint disable-next-line
+        // @typescript-eslint/no-unused-vars
         airingToday,
         onTheAir,
         popularSeries,
