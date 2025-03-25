@@ -6,6 +6,7 @@ import { Film } from "@/types/films"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import Link from "next/link"
 import { useRef } from "react"
+import Image from "next/image"
 
 type Props = {
     items: Film[] | Serie[]
@@ -58,9 +59,11 @@ export function Highlights({ items, title, type }: Props) {
                                         key={Math.random()}
                                         className="w-[13rem] flex flex-shrink-0 h-80 cursor-pointer hover:border hover:border-white select-none"
                                     >
-                                        <img
+                                        <Image
                                             src={baseUrlImage + item.poster_path}
                                             alt="Avengers"
+                                            width={200}
+                                            height={300}
                                             className="w-full h-full object-cover rounded-md"
                                         />
                                     </div>
