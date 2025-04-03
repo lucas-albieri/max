@@ -1,3 +1,5 @@
+'use cache'
+
 import { Season } from "@/types/episodes";
 import { clientTMDB } from "../../api/client-tmdb";
 

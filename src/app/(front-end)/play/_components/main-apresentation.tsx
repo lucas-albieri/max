@@ -30,7 +30,7 @@ export function MainApresentation({ film, logo }: MainApresentationProps) {
                 className="h-full  w-screen object-cover object-right-top absolute z-[0]"
             />
             <div
-                className="absolute top-[28rem] left-16 gap-2 w-2/6 flex flex-col z-[3]"
+                className="absolute top-[20rem] left-16 gap-2 w-2/6 flex flex-col z-[3]"
             >
                 <Image
                     src={baseUrlImage + logo || ""}
