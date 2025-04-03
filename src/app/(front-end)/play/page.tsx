@@ -38,12 +38,12 @@ export default async function Home({ searchParams }: Params) {
         page: 1
     })
 
-    const randomNumber = Math.floor(Math.random() * 10)
-    const topFilm = popular[randomNumber]
+    const topFilm = popular[0]
     const logoTopFilm = await getLogoFilm(topFilm.id.toString())
 
     return (
         <div
+            id="scrollable-container"
             className=" flex flex-col h-screen overflow-y-scroll gap-2"
             style={{
                 backgroundImage: `url(${bgScreen.src})`,
@@ -59,7 +59,7 @@ export default async function Home({ searchParams }: Params) {
                 <Header />
                 <MainApresentation
                     film={topFilm}
-                    logo={logoTopFilm.logos[0].file_path}
+                    logo={logoTopFilm.logos[0].file_path || ""}
                 />
             </div>
 
