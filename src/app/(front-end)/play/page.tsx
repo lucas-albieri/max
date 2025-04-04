@@ -80,7 +80,7 @@ export default async function Home({ searchParams }: Params) {
                 />
 
                 <Top10Ranking
-                    items={onTheAir}
+                    items={onTheAir.splice(0, 10)}
                 />
 
                 <Highlights
@@ -95,7 +95,6 @@ export default async function Home({ searchParams }: Params) {
                     type="film"
                 />
             </div>
-
         </div >
     )
 }
