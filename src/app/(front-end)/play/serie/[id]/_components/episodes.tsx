@@ -22,7 +22,7 @@ export function Episodes({ episodes, recommendedSeries, seasons }: Props) {
     const [showSeasonDropdown, setShowSeasonDropdown] = useState(false)
 
     return (
-        <div className="min-h-screen bg-black text-white px-12 pb-4 ">
+        <div className=" bg-black text-white lg:px-12 px-4 py-4 ">
             {/* Episodes Header */}
             <div className="py-4 border-b border-white/10">
                 <h2 className="text-xl font-medium">Episódios</h2>

@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export const Footer = () => {
     return (
-        <footer className=" text-white py-8 px-12">
+        <footer className=" text-white py-8 lg:px-12 px-4">
             <div className="container   flex flex-col md:flex-row justify-between items-center">
                 <div className="text-sm">&copy; {new Date().getFullYear()} WarnerMedia Direct, LLC. Todos os direitos reservados.</div>
                 <div className="flex space-x-4">
