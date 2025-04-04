@@ -20,13 +20,13 @@ export function Highlights({ items, title, type }: Props) {
 
     return (
         <div
-            className="flex flex-col  gap-4 z-[2] w-full"
+            className="flex flex-col gap-4 z-[2] w-full"
         >
-            <h1 className="text-xl font-bold text-zinc-100 select-none">
+            <h1 className="lg:text-xl text-lg font-bold text-zinc-100 select-none">
                 {title}
             </h1>
             <div
-                className="relative w-full h-80"
+                className="relative w-full lg:h-80 h-48"
             >
                 <div
                     onClick={() => {
@@ -34,13 +34,13 @@ export function Highlights({ items, title, type }: Props) {
                             carrosselRef.current.scrollLeft -= 300
                         }
                     }}
-                    className={`z-[1] absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 h-full w-12 flex items-center justify-center cursor-pointer  `}
+                    className={`z-[1] absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 h-full lg:w-12 w-8 items-center justify-center cursor-pointer lg:flex hidden `}
                 >
                     <ChevronLeftIcon size={26} color="white" />
                 </div>
                 <div
                     ref={carrosselRef}
-                    className={`relative w-full flex overflow-x-auto gap-4 snap-mandatory scroll-smooth  `}
+                    className={`relative w-full flex overflow-x-auto lg:gap-4 gap-2 snap-mandatory scroll-smooth  `}
                     style={{
                         scrollbarColor: "transparent transparent",
                     }}
@@ -57,7 +57,7 @@ export function Highlights({ items, title, type }: Props) {
                                 >
                                     <div
                                         key={Math.random()}
-                                        className="w-[13rem] flex flex-shrink-0 h-80 cursor-pointer hover:border hover:border-white select-none"
+                                        className="lg:w-[13rem] w-[8rem] flex flex-shrink-0 lg:h-80 h-48 cursor-pointer hover:border hover:border-white select-none"
                                     >
                                         <Image
                                             src={baseUrlImage + item.poster_path}
@@ -80,7 +80,7 @@ export function Highlights({ items, title, type }: Props) {
                             carrosselRef.current.scrollLeft += 300
                         }
                     }}
-                    className={`absolute top-1/2 right-0 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 h-full w-12 flex items-center justify-center cursor-pointer `}
+                    className={`absolute top-1/2 right-0 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 h-full w-12 items-center justify-center cursor-pointer lg:flex hidden`}
                 >
                     <ChevronRightIcon
                         size={26}

@@ -51,7 +51,6 @@ export default async function Home({ searchParams }: Params) {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-
         >
             <div
                 className=" h-full"
@@ -64,7 +63,7 @@ export default async function Home({ searchParams }: Params) {
             </div>
 
             <div
-                className="flex flex-col gap-8 px-16"
+                className="flex flex-col lg:gap-8 gap-6 lg:px-16 px-4"
             >
                 {/* Destaques */}
                 <Highlights
