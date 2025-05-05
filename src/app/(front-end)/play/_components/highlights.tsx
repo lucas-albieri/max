@@ -50,8 +50,8 @@ export function Highlights({ items, title, type }: Props) {
                             return (
                                 <Link
                                     href={
-                                        type === 'film' ? `movie/${item.id}`
-                                            : `serie/${item.id}`
+                                        type === 'film' ? `play/movie/${item.id}`
+                                            : `play/serie/${item.id}`
                                     }
                                     key={item.id}
                                 >
