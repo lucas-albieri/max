@@ -1,15 +1,13 @@
-import { apiSupabaseClient } from "@/utils/supabase/client";
 
 export async function signUp(data: Record<string, unknown>) {
-    const { data: response, error } = await apiSupabaseClient.auth.signUp({
-        email: data.email as string,
-        password: data.password as string,
-        options: {
-            data: {
-                username: data.displayName as string
-            }
-        }
-    });
+    const { data: response, error } = await fetch('/api/auth/sign-up', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }).then((res) => res.json());
+
     if (error) {
         throw error;
     }
@@ -17,15 +15,3 @@ export async function signUp(data: Record<string, unknown>) {
 
 }
 
-export async function googleSignIn() {
-    const { } = await apiSupabaseClient.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-            queryParams: {
-                access_type: 'offline',
-                prompt: 'consent',
-            },
-            redirectTo: `${window.location.origin}/auth/callback`,
-        },
-    });
-}

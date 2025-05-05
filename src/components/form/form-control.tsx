@@ -4,7 +4,6 @@ import { FormProvider, useForm } from "react-hook-form";
 import { type ZodSchema, type z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
-import { AuthApiError } from "@supabase/supabase-js";
 
 type Props<
     T extends ZodSchema,
@@ -53,8 +52,10 @@ export function FormControl<
                         onSuccess?.(response as Awaited<ReturnType<F>>)
                         reset()
                     } catch (error) {
-                        if (error instanceof AuthApiError) {
+                        if (error instanceof Error) {
                             toast.error(error.message)
+                        } else {
+                            toast.error('Ocorreu um erro inesperado.')
                         }
                     }
                 })}
