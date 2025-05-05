@@ -55,7 +55,7 @@ export function MainApresentation({ film, logo }: MainApresentationProps) {
                     {film.overview.split(' ').slice(0, 20).join(' ')}...
                 </p>
                 <Link
-                    href={`/movie/${film.id}`}
+                    href={`play/movie/${film.id}`}
                 >
                     <div
                         className="cursor-pointer bg-zinc-700/60 inline-block px-4 lg:py-2 py-4 rounded-md mt-4 pg:w-48 w-full font-bold text-center text-xl"

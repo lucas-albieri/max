@@ -105,7 +105,7 @@ export function Episodes({ episodes, recommendedSeries, seasons }: Props) {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4">
                     {recommendedSeries.map((show) => (
                         <Link
-                            href={`/serie/${show.id}`}
+                            href={`play/serie/${show.id}`}
                             key={show.id}
                         >
                             <div key={show.id} className="relative group">
