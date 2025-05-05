@@ -1,6 +1,9 @@
+'use client'
+
 import Link from "next/link"
 
 export const Footer = () => {
+
     return (
         <footer className=" text-white py-8 lg:px-12 px-4">
             <div className="container   flex flex-col md:flex-row justify-between items-center">
