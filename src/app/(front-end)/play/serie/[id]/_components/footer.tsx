@@ -1,13 +1,14 @@
 'use client'
 
 import Link from "next/link"
+import dayjs from "dayjs"
 
 export const Footer = () => {
 
     return (
         <footer className=" text-white py-8 lg:px-12 px-4">
             <div className="container   flex flex-col md:flex-row justify-between items-center">
-                <div className="text-sm">&copy; {new Date().getFullYear()} WarnerMedia Direct, LLC. Todos os direitos reservados.</div>
+                <div className="text-sm">&copy; {dayjs().format("YYYY")} WarnerMedia Direct, LLC. Todos os direitos reservados.</div>
                 <div className="flex space-x-4">
                     <Link href="https://facebook.com" aria-label="Facebook" className="text-white/70 hover:text-white transition">
                         <svg

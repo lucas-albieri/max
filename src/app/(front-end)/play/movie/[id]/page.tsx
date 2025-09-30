@@ -1,4 +1,4 @@
-import { HeadphonesIcon, PodcastIcon } from "lucide-react";
+import { ArrowLeft, HeadphonesIcon, PodcastIcon } from "lucide-react";
 import Image from "next/image";
 import { Header } from "../../_components/header";
 import { getFilmById } from "@/services/tmdb/films/get-film-by-id";
@@ -6,6 +6,7 @@ import { baseUrlImage } from "@/services/api/client-tmdb";
 import { Footer } from "../../serie/[id]/_components/footer";
 import { ActionButtons } from "@/components/action-buttons";
 import { getLogoFilm } from "@/services/tmdb/films/get-logo-film";
+import BackButton from "@/components/ui/back-button";
 
 type Props = {
     params: Promise<{
@@ -28,6 +29,7 @@ export default async function MovieById({ params }: Props) {
 
             {/* Main Content */}
             <main className="relative">
+                <BackButton />
                 {/* Hero Banner */}
                 <div className="relative w-full h-[92vh]">
                     <Image

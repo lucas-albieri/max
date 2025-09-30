@@ -9,6 +9,7 @@ import { Footer } from "./_components/footer";
 import { getRecommendedSeriesBySerie } from "@/services/tmdb/series/get-recommended-series-by-serie";
 import { ActionButtons } from "@/components/action-buttons";
 import { getLogoSerie } from "@/services/tmdb/series/get-logo-serie";
+import BackButton from "@/components/ui/back-button";
 
 type Props = {
     params: Promise<{
@@ -39,6 +40,9 @@ export default async function SerieById({ params, searchParams }: Props) {
 
             {/* Main Content */}
             <main className="relative w-full lg:h-[92vh] h-[92vh] ">
+
+                <BackButton />
+
                 {/* Hero Banner */}
                 <Image
                     src={baseUrlImage + data.backdrop_path}
