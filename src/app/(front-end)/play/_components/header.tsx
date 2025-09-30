@@ -2,11 +2,23 @@
 
 import logo from '../../../../assets/images/logo-max.svg';
 import Link from 'next/link';
-import { BookmarkIcon, SearchIcon } from 'lucide-react';
+import { BookmarkIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 import avatarIcon from "../../../../assets/images/picapau.png";
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import { useEffect, useState, useCallback } from 'react';
+import { SearchBox } from './search-box';
+import { searchMulti, SearchResult } from '@/services/tmdb/search/search-multi';
+import { FavoriteItems } from './favorite-items';
 
 export function Header() {
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [favoriteModalOpen, setFavoriteModalOpen] = useState(false)
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+    const [isSearching, setIsSearching] = useState(false);
 
     const links = [
         {
@@ -37,61 +49,133 @@ export function Header() {
 
     const pathname = usePathname();
 
+    useEffect(() => {
+        const container = document.getElementById("scrollable-container");
+
+        const handleScroll = () => {
+            setScrolled((container?.scrollTop ?? 0) > 50);
+        };
+
+        container?.addEventListener("scroll", handleScroll);
+        return () => container?.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const handleSearch = useCallback(async (query: string) => {
+        setIsSearching(true);
+        try {
+            const response = await searchMulti({ query });
+            setSearchResults(response.results);
+        } catch (error) {
+            setSearchResults([]);
+        } finally {
+            setIsSearching(false);
+        }
+    }, []);
+
     return (
-        <div className="flex items-center justify-between h-20  text-white w-full px-20 fixed top-0 z-10" >
-            <div
-                className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black to-black/10 -z-10"
-            />
-            <div className="flex items-center" >
-                <img
-                    src={logo.src}
-                    alt="Logo"
-                    className="lg:h-8 h-6"
+        <header
+            className={`fixed top-0 w-full h-20 z-50 flex items-center px-6 md:px-20 justify-between text-white
+                        transition-all duration-300 ${scrolled ? "bg-black/70 backdrop-blur-md" : "bg-black/10 backdrop-blur-sm"} `
+            }
+        >
+            <div className="relative flex items-center z-10">
+                <Image src={logo.src} alt="Logo" width={100} height={100} className="h-8" />
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8 relative z-10">
+                {links.map((link, index) => (
+                    <Link key={index} href={link.href}>
+                        <p
+                            className="hover:text-gray-300 text-md font-bold"
+                            style={{
+                                textDecoration: pathname === link.href ? "underline" : "none",
+                                textUnderlineOffset: "12px",
+                                textDecorationThickness: "3px",
+                            }}
+                        >
+                            {link.title}
+                        </p>
+                    </Link>
+                ))}
+            </nav>
+
+            {/* Icons */}
+            <div className="hidden md:flex items-center gap-6 relative z-10">
+                <SearchIcon
+                    className="h-6 w-6 cursor-pointer hover:text-gray-300 transition-colors"
+                    onClick={() => setSearchOpen(true)}
                 />
-            </div>
-            <div className="flex items-center gap-8" >
-
-                {
-                    links.map((link, index) => {
-                        return (
-                            <Link
-                                key={index}
-                                href={link.href}
-                            >
-                                <p
-                                    className="hover:text-gray-300 text-md font-bold"
-                                    style={{
-                                        textDecoration: pathname === link.href ? 'underline' : 'none',
-                                        textUnderlineOffset: '12px',
-                                        textDecorationThickness: '3px'
-                                    }}
-                                >
-                                    {link.title}
-                                </p>
-                            </Link>
-                        )
-                    })
-                }
-
-            </div>
-
-            <div
-                className="flex items-center gap-8"
-            >
-                <SearchIcon className="h-6 w-6 cursor-pointer" />
-                <BookmarkIcon className="h-6 w-6 cursor-pointer" />
+                <BookmarkIcon
+                    className="h-6 w-6 cursor-pointer"
+                    onClick={() => setFavoriteModalOpen(true)}
+                />
                 <UserIcon />
             </div>
-        </div>
+
+            {/* Mobile Menu Button */}
+            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden relative z-10">
+                {menuOpen ? <XIcon className="h-8 w-8" /> : <MenuIcon className="h-8 w-8" />}
+            </button>
+
+            {/* Mobile Menu */}
+            {menuOpen && (
+                <div className="absolute top-20 left-0 w-full bg-black text-white flex flex-col items-center py-4 space-y-4 md:hidden">
+                    {/* Search button for mobile */}
+                    <button
+                        onClick={() => {
+                            setSearchOpen(true)
+                            setMenuOpen(false)
+                        }}
+                        className="flex items-center gap-2 hover:text-gray-300 text-md font-bold"
+                    >
+                        <SearchIcon className="h-5 w-5" />
+                        Buscar
+                    </button>
+
+                    {links.map((link, index) => (
+                        <Link key={index} href={link.href} onClick={() => setMenuOpen(false)}>
+                            <p
+                                className="hover:text-gray-300 text-md font-bold"
+                                style={{
+                                    textDecoration: pathname === link.href ? "underline" : "none",
+                                    textUnderlineOffset: "12px",
+                                    textDecorationThickness: "3px",
+                                }}
+                            >
+                                {link.title}
+                            </p>
+                        </Link>
+                    ))}
+                </div>
+            )}
+
+            {/* Search Modal */}
+            <SearchBox
+                isOpen={searchOpen}
+                onClose={() => setSearchOpen(false)}
+                onSearch={handleSearch}
+                results={searchResults}
+                isLoading={isSearching}
+            />
+
+            <FavoriteItems
+                isOpen={favoriteModalOpen}
+                onClose={() => setFavoriteModalOpen(false)}
+            />
+
+        </header>
     )
 }
 
 const UserIcon = () => {
     return (
         <div className="flex items-center gap-2 cursor-pointer ">
-            <img
+            <Image
                 src={avatarIcon.src}
                 alt="User"
+                width={32}
+                height={32}
                 className="h-8 w-8 rounded-full hover:border hover:border-white "
             />
         </div>

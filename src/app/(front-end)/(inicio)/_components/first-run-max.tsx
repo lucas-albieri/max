@@ -1,4 +1,11 @@
+'use client'
+
+
+import { useRouter } from "next/navigation";
+
 export function FirstRun() {
+
+    const router = useRouter();
 
     const firstRunBanners = [
         'https://beam-images.warnermediacdn.com/2024-09/city_of_god_bpo.jpg?host=wbd-dotcom-drupal-prd-us-east-1.s3.amazonaws.com&w=640',
@@ -42,6 +49,7 @@ export function FirstRun() {
                     backgroundColor: "#002be7",
                 }}
                 className="text-white  text-md font-bold px-8 py-3 rounded-md mt-4 cursor-pointer"
+                onClick={() => router.push('/play')}
             >
                 ASSINE AGORA
             </div>

@@ -3,8 +3,12 @@
 import { Button } from '@/components/ui/button';
 import logo from '../../../../assets/images/logo-max.svg';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export function Header() {
+
+    const router = useRouter()
+
     return (
         <div className="flex items-center justify-between h-14 bg-neutral-950 text-white w-full px-4 fixed top-0 bg-opacity-95 z-10">
             <div className="flex items-center">
@@ -15,15 +19,15 @@ export function Header() {
                 />
             </div>
             <div className="flex items-center gap-2">
-
                 <Button
                     className="text-white font-semibold  text-xs lg:text-sm hover:bg-white/15 hover:no-underline"
                     variant={'link'}
+                    onClick={() => router.push('/play')}
                 >
                     ENTRAR
                 </Button>
                 <Link
-                    href="/cadastro"
+                    href="/play"
                 >
                     <Button
                         variant={'secondary'}

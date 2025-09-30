@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 export function useWindowSize() {
     const [size, setSize] = useState({ width: 0, height: 0 });
-    const resizeTimeout = useRef<number>();
+    const resizeTimeout = useRef<number | null>(null);
 
     useEffect(() => {
         if (typeof window === "undefined") return;

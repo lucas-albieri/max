@@ -1,3 +1,5 @@
+'use cache'
+
 import { clientTMDB } from "@/services/api/client-tmdb";
 import { Serie } from "@/types/series";
 

@@ -4,7 +4,7 @@ import { FormControl } from "@/components/form/form-control"
 import { TextField } from "@/components/form/text-field"
 import { Button } from "@/components/ui/button"
 import { z } from "zod"
-import { googleSignIn, signUp } from "../_core/sign-up"
+import { signUp } from "../_core/sign-up"
 import { toast } from "sonner"
 import googleIcon from "@/assets/images/social-media/google.png"
 import Image from "next/image"
@@ -74,21 +74,6 @@ export function SignUpForm() {
                             type="submit"
                         >
                             Criar Conta
-                        </Button>
-                        <Button
-                            className="bg-gray-200 hover:bg-white text-slate-900 font-bold text-lg w-full py-6"
-                            size={'lg'}
-                            type="button"
-                            onClick={googleSignIn}
-                        >
-                            <Image
-                                src={googleIcon}
-                                alt="Google"
-                                width={24}
-                                height={24}
-                                className="mr-2"
-                            />
-                            Entrar com o Google
                         </Button>
                     </div>
 

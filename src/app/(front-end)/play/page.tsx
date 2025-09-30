@@ -38,12 +38,12 @@ export default async function Home({ searchParams }: Params) {
         page: 1
     })
 
-    const randomNumber = Math.floor(Math.random() * 10)
-    const topFilm = popular[randomNumber]
+    const topFilm = popular[0]
     const logoTopFilm = await getLogoFilm(topFilm.id.toString())
 
     return (
         <div
+            id="scrollable-container"
             className=" flex flex-col h-screen overflow-y-scroll gap-2"
             style={{
                 backgroundImage: `url(${bgScreen.src})`,
@@ -51,7 +51,6 @@ export default async function Home({ searchParams }: Params) {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-
         >
             <div
                 className=" h-full"
@@ -59,12 +58,12 @@ export default async function Home({ searchParams }: Params) {
                 <Header />
                 <MainApresentation
                     film={topFilm}
-                    logo={logoTopFilm.logos[0].file_path}
+                    logo={logoTopFilm.logos[0].file_path || ""}
                 />
             </div>
 
             <div
-                className="flex flex-col gap-8 px-16"
+                className="flex flex-col lg:gap-8 gap-6 lg:px-16 px-4"
             >
                 {/* Destaques */}
                 <Highlights
@@ -81,7 +80,7 @@ export default async function Home({ searchParams }: Params) {
                 />
 
                 <Top10Ranking
-                    items={onTheAir}
+                    items={onTheAir.splice(0, 10)}
                 />
 
                 <Highlights
@@ -96,7 +95,6 @@ export default async function Home({ searchParams }: Params) {
                     type="film"
                 />
             </div>
-
         </div >
     )
 }

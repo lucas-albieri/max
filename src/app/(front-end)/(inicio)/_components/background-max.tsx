@@ -39,7 +39,7 @@ export function BackgroundMax() {
                     Planos a partir de R$18,90 / mês
                 </p>
                 <Link
-                    href="/cadastro"
+                    href="/play"
                     className="text-white bg-primary hover:bg-primary-hover  text-md font-bold px-8 py-3 rounded-md mt-4 cursor-pointer"
                 >
                     ASSINE AGORA

@@ -193,7 +193,7 @@ const CardPlan = ({ features, price, title, type }: CardsProps) => {
                 className="justify-center items-end h-full"
             >
                 <Link
-                    href="/cadastro"
+                    href="/play"
                 >
                     <Button
                         className=" font-bold bg-primary hover:bg-primary-hover"

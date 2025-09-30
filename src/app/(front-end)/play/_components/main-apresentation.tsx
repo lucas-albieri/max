@@ -20,26 +20,28 @@ export function MainApresentation({ film, logo }: MainApresentationProps) {
             }}
         >
             <div
-                className="absolute top-0 h-full left-0 w-4/6  bg-gradient-to-r from-black to-transparent z-[1]"
+                className="absolute top-0 h-full left-0 lg:w-4/6 w-full  bg-gradient-to-r from-black to-transparent z-[1]"
             />
+
             <Image
                 src={baseUrlImage + film.backdrop_path}
                 width={1920}
                 height={1080}
                 alt={film.title}
-                className="h-full  w-screen object-cover object-right-top absolute z-[0]"
+                className="h-full w-screen object-cover lg:object-right-top object-center absolute z-[0]"
             />
             <div
-                className="absolute top-[28rem] left-16 gap-2 w-2/6 flex flex-col z-[3]"
+                className="absolute lg:top-[20rem] top-[50vh] lg:left-16 left-0 gap-2  lg:w-2/6 w-full lg:px-0 px-4 flex flex-col z-[3]"
             >
                 <Image
                     src={baseUrlImage + logo || ""}
                     alt={film.title}
                     width={400}
                     height={100}
+                    className="lg:w-[400px] lg:h-[100px] w-full h-full object-contain"
                 />
                 <div
-                    className="flex gap-2 items-center"
+                    className="flex gap-2 items-center mt-6 lg:justify-start justify-center"
                 >
                     <AgeRatingBox adult={film.adult} />
                     <p>
@@ -48,15 +50,15 @@ export function MainApresentation({ film, logo }: MainApresentationProps) {
                 </div>
 
                 <p
-                    className="text-lg"
+                    className="text-lg lg:text-left text-center"
                 >
                     {film.overview.split(' ').slice(0, 20).join(' ')}...
                 </p>
                 <Link
-                    href={`/movie/${film.id}`}
+                    href={`play/movie/${film.id}`}
                 >
                     <div
-                        className="cursor-pointer bg-gray-500/40 inline-block px-4 py-2 rounded-md mt-4 w-48 font-bold text-center text-xl"
+                        className="cursor-pointer bg-zinc-700/60 inline-block px-4 lg:py-2 py-4 rounded-md mt-4 pg:w-48 w-full font-bold text-center text-xl"
                     >
                         Ir para o Filme
                     </div>
