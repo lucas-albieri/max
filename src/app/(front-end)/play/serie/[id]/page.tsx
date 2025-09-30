@@ -62,14 +62,15 @@ export default async function SerieById({ params, searchParams }: Props) {
                 <div className="absolute lg:bottom-0 -bottom-10 left-0 lg:p-12 p-4 w-full z-10">
                     <div className="flex flex-col gap-4 max-w-3xl">
                         {/* Show Title */}
-                        <Image
-                            src={baseUrlImage + filePathLogo.logos[0].file_path || ""}
-                            unoptimized
-                            alt={data.name}
-                            width={400}
-                            height={100}
-                        />
-
+                        {
+                            filePathLogo?.logos[0]?.file_path ? <Image
+                                src={baseUrlImage + filePathLogo?.logos[0]?.file_path}
+                                unoptimized
+                                alt={data.name}
+                                width={400}
+                                height={100}
+                            /> : <h1 className="text-3xl font-bold">{data.name}</h1>
+                        }
                         {/* Show Info */}
                         <div className="flex items-center gap-3 text-sm text-white/80 mb-4">
                             <span className="flex items-center justify-center px-1 bg-green-600 text-white text-xs">L</span>
