@@ -80,6 +80,7 @@ export default async function MovieById({ params }: Props) {
                             {/* Action Buttons */}
                             <ActionButtons
                                 type="movie"
+                                title={data.title}
                             />
 
                             {/* Description */}

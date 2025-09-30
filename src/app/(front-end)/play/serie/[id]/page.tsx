@@ -91,6 +91,7 @@ export default async function SerieById({ params, searchParams }: Props) {
                         {/* Action Buttons */}
                         <ActionButtons
                             type="serie"
+                            title={data.name}
                         />
 
                         {/* Description */}

@@ -9,12 +9,14 @@ import Image from 'next/image';
 import { useEffect, useState, useCallback } from 'react';
 import { SearchBox } from './search-box';
 import { searchMulti, SearchResult } from '@/services/tmdb/search/search-multi';
+import { FavoriteItems } from './favorite-items';
 
 export function Header() {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
+    const [favoriteModalOpen, setFavoriteModalOpen] = useState(false)
     const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
     const [isSearching, setIsSearching] = useState(false);
 
@@ -64,15 +66,10 @@ export function Header() {
             const response = await searchMulti({ query });
             setSearchResults(response.results);
         } catch (error) {
-            // console.error('Erro na busca:', error);
             setSearchResults([]);
         } finally {
             setIsSearching(false);
         }
-    }, []);
-
-    const handleClearResults = useCallback(() => {
-        setSearchResults([]);
     }, []);
 
     return (
@@ -109,7 +106,10 @@ export function Header() {
                     className="h-6 w-6 cursor-pointer hover:text-gray-300 transition-colors"
                     onClick={() => setSearchOpen(true)}
                 />
-                <BookmarkIcon className="h-6 w-6 cursor-pointer" />
+                <BookmarkIcon
+                    className="h-6 w-6 cursor-pointer"
+                    onClick={() => setFavoriteModalOpen(true)}
+                />
                 <UserIcon />
             </div>
 
@@ -158,6 +158,12 @@ export function Header() {
                 results={searchResults}
                 isLoading={isSearching}
             />
+
+            <FavoriteItems
+                isOpen={favoriteModalOpen}
+                onClose={() => setFavoriteModalOpen(false)}
+            />
+
         </header>
     )
 }
