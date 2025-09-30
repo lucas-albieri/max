@@ -8,7 +8,7 @@ export const clientTMDB = axios.create({
     },
     headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_APP_TMDB_API_KEY}`
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
     },
 })
 

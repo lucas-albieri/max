@@ -6,12 +6,17 @@ import { BookmarkIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 import avatarIcon from "../../../../assets/images/picapau.png";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { SearchBox } from './search-box';
+import { searchMulti, SearchResult } from '@/services/tmdb/search/search-multi';
 
 export function Header() {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+    const [isSearching, setIsSearching] = useState(false);
 
     const links = [
         {
@@ -53,6 +58,23 @@ export function Header() {
         return () => container?.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const handleSearch = useCallback(async (query: string) => {
+        setIsSearching(true);
+        try {
+            const response = await searchMulti({ query });
+            setSearchResults(response.results);
+        } catch (error) {
+            // console.error('Erro na busca:', error);
+            setSearchResults([]);
+        } finally {
+            setIsSearching(false);
+        }
+    }, []);
+
+    const handleClearResults = useCallback(() => {
+        setSearchResults([]);
+    }, []);
+
     return (
         <header
             className={`fixed top-0 w-full h-20 z-50 flex items-center px-6 md:px-20 justify-between text-white
@@ -83,7 +105,10 @@ export function Header() {
 
             {/* Icons */}
             <div className="hidden md:flex items-center gap-6 relative z-10">
-                <SearchIcon className="h-6 w-6 cursor-pointer" />
+                <SearchIcon
+                    className="h-6 w-6 cursor-pointer hover:text-gray-300 transition-colors"
+                    onClick={() => setSearchOpen(true)}
+                />
                 <BookmarkIcon className="h-6 w-6 cursor-pointer" />
                 <UserIcon />
             </div>
@@ -96,6 +121,18 @@ export function Header() {
             {/* Mobile Menu */}
             {menuOpen && (
                 <div className="absolute top-20 left-0 w-full bg-black text-white flex flex-col items-center py-4 space-y-4 md:hidden">
+                    {/* Search button for mobile */}
+                    <button
+                        onClick={() => {
+                            setSearchOpen(true)
+                            setMenuOpen(false)
+                        }}
+                        className="flex items-center gap-2 hover:text-gray-300 text-md font-bold"
+                    >
+                        <SearchIcon className="h-5 w-5" />
+                        Buscar
+                    </button>
+
                     {links.map((link, index) => (
                         <Link key={index} href={link.href} onClick={() => setMenuOpen(false)}>
                             <p
@@ -112,6 +149,15 @@ export function Header() {
                     ))}
                 </div>
             )}
+
+            {/* Search Modal */}
+            <SearchBox
+                isOpen={searchOpen}
+                onClose={() => setSearchOpen(false)}
+                onSearch={handleSearch}
+                results={searchResults}
+                isLoading={isSearching}
+            />
         </header>
     )
 }
