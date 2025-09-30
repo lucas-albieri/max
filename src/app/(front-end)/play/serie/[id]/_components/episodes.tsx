@@ -8,6 +8,7 @@ import { useState } from "react"
 import { useQueryState } from "nuqs"
 import { Serie } from "@/types/series"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 type Props = {
     episodes: Episode[]
@@ -18,8 +19,9 @@ type Props = {
 export function Episodes({ episodes, recommendedSeries, seasons }: Props) {
 
     const [season, setSeason] = useQueryState("season", { defaultValue: "1", shallow: false })
-
     const [showSeasonDropdown, setShowSeasonDropdown] = useState(false)
+    const router = useRouter()
+
 
     return (
         <div className=" bg-black text-white lg:px-12 px-4 py-4 ">
@@ -104,11 +106,12 @@ export function Episodes({ episodes, recommendedSeries, seasons }: Props) {
                 <h2 className="text-xl font-medium mb-4">Você também pode gostar</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4">
                     {recommendedSeries.map((show) => (
-                        <Link
-                            href={`play/serie/${show.id}`}
+                        <div
                             key={show.id}
+                            className="cursor-pointer"
+                            onClick={() => router.push(`/play/serie/${show.id}`)}
                         >
-                            <div key={show.id} className="relative group">
+                            <div className="relative group">
                                 <div className="relative aspect-[2/3] overflow-hidden rounded-md bg-[#1a1a1a]">
                                     <Image
                                         src={baseUrlImage + show.poster_path}
@@ -126,7 +129,7 @@ export function Episodes({ episodes, recommendedSeries, seasons }: Props) {
                                     </button>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>
